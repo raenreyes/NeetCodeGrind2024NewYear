@@ -4,29 +4,28 @@
     {
         static void Main(string[] args)
         {
-            IsAnagram("rat", "car");
+            int[] numArray = { 2, 9, 11, 15 };
+            TwoSum(numArray, 9);
 
         }
-        public static bool IsAnagram(string s, string t)
+        public static int[] TwoSum(int[] nums, int target)
         {
-            char[] word1 = s.ToCharArray();
-            char[] word2 = t.ToCharArray();
-
-            Array.Sort(word1);
-            Array.Sort(word2);
-
-            for (int i = 0; i < word1.Length; i++)
-            {
-                if (word1.Length != word2.Length)
+            
+            for (int i = 0; i < nums.Length; i++)
+            {   
+                
+                for (int j = i + 1; j < nums.Length; j++)
                 {
-                    return false;
+                  
+                    if (nums[i] + nums[j] == target)
+                    {
+                        Console.WriteLine("Found");
+                        return new int[] { i, j };
+                    }
                 }
-               if (word1[i] != word2[i])
-                {
-                    return false;
-                }
+                
             }
-            return true;
+            return new int[0];
         }
 
     }
