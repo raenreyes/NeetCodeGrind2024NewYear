@@ -4,25 +4,30 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("217 contains duplicate");
-            int[] nums = { 1, 2, 3, 4 };
-            ContainsDuplicate(nums);
-        }
-        public static bool ContainsDuplicate(int[] nums)
-        {
+            IsAnagram("rat", "car");
 
-            for(int i = 0; i < nums.Length; i++)
+        }
+        public static bool IsAnagram(string s, string t)
+        {
+            char[] word1 = s.ToCharArray();
+            char[] word2 = t.ToCharArray();
+
+            Array.Sort(word1);
+            Array.Sort(word2);
+
+            for (int i = 0; i < word1.Length; i++)
             {
-                for (int j = i + 1; j < nums.Length; j++) { 
-                    if (nums[i] == nums[j])
-                    {
-                        Console.WriteLine("True");
-                        return true;
-                    }
+                if (word1.Length != word2.Length)
+                {
+                    return false;
+                }
+               if (word1[i] != word2[i])
+                {
+                    return false;
                 }
             }
-            Console.WriteLine("False");
-            return false;
+            return true;
         }
+
     }
 }
