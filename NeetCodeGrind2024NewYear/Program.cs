@@ -6,41 +6,33 @@ namespace NeetCodeGrind2024NewYear
     {
         static void Main(string[] args)
         {
-            string s = "A man, a plan, a canal -- Panama";
-            IsPalindrome(s);
-            
+            int[] myArray = new int[] { 1, 1, 2 };
+            Console.WriteLine(RemoveDuplicates(myArray));
+
         }
-
-        public static bool IsPalindrome(string s)
+        public static int RemoveDuplicates(int[] nums)
         {
-            Regex rgx = new Regex("[^a-zA-Z0-9]");
-            s = rgx.Replace(s, "");
-            s = s.Replace(" ", "").ToLower();
-            
-            char[] one = s.ToCharArray();
-            char[] two = s.ToCharArray();
-
-            
-            Array.Reverse(two);
-
-           
-
-            for (int i = 0; i < one.Length; i++)
+            int[] result = new int[nums.Length];
+            int tempNum = int.MaxValue;
+            int counter = 0;
+            for (int i = 0, j = 0; i < nums.Length; i++)
             {
-                if (one.Length != two.Length)
+                if (nums[i] != tempNum)
                 {
-                    return false;
-                }
-                if (one[i] != two[i])
-                {
-                    Console.WriteLine("False");
-                    return false;
+                    result[j] = nums[i];
+                    j++;
+                    counter++;
+                    tempNum = nums[i];
+
                 }
 
             }
-            Console.WriteLine("True");
-            return true;
-            
+            for (int k = 0; k < result.Length; k++)
+            {
+                nums[k] = result[k];
+            }
+            return counter;
         }
+
     }
-}   
+}
