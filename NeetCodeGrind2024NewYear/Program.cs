@@ -6,32 +6,27 @@ namespace NeetCodeGrind2024NewYear
     {
         static void Main(string[] args)
         {
-            int[] myArray = new int[] { 1, 1, 2 };
-            Console.WriteLine(RemoveDuplicates(myArray));
+            Console.WriteLine(IsPalindrome(-121));
 
         }
-        public static int RemoveDuplicates(int[] nums)
+        public static bool IsPalindrome(int x)
         {
-            int[] result = new int[nums.Length];
-            int tempNum = int.MaxValue;
-            int counter = 0;
-            for (int i = 0, j = 0; i < nums.Length; i++)
+            string toWord1 = x.ToString();
+            string toWord2 = x.ToString();
+
+            char[] toCharArray1 = toWord1.ToCharArray();
+            char[] toCharArray2 = toWord2.ToCharArray();
+
+            Array.Reverse(toCharArray2);
+
+            for (int i = 0; i < toCharArray1.Length; i++)
             {
-                if (nums[i] != tempNum)
+                if (toCharArray1[i] != toCharArray2[i])
                 {
-                    result[j] = nums[i];
-                    j++;
-                    counter++;
-                    tempNum = nums[i];
-
+                    return false;
                 }
-
             }
-            for (int k = 0; k < result.Length; k++)
-            {
-                nums[k] = result[k];
-            }
-            return counter;
+            return true;
         }
 
     }
