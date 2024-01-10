@@ -6,27 +6,17 @@ namespace NeetCodeGrind2024NewYear
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(IsPalindrome(-121));
+            Console.WriteLine(LengthOfLastWord(" fly me  to  the moon "));
 
+            
         }
-        public static bool IsPalindrome(int x)
+        public static int LengthOfLastWord(string s)
         {
-            string toWord1 = x.ToString();
-            string toWord2 = x.ToString();
+            string[] words = s.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+            string lastWord = words[words.Length - 1];
+            int howManyLetters = lastWord.Length;
 
-            char[] toCharArray1 = toWord1.ToCharArray();
-            char[] toCharArray2 = toWord2.ToCharArray();
-
-            Array.Reverse(toCharArray2);
-
-            for (int i = 0; i < toCharArray1.Length; i++)
-            {
-                if (toCharArray1[i] != toCharArray2[i])
-                {
-                    return false;
-                }
-            }
-            return true;
+            return howManyLetters;
         }
 
     }
