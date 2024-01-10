@@ -6,17 +6,23 @@ namespace NeetCodeGrind2024NewYear
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(LengthOfLastWord(" fly me  to  the moon "));
-
+            int[] nums = new int[] { 1, 2, 3, 1, 2, 3 };
             
+            Console.WriteLine(ContainsNearbyDuplicate(nums, 2));
         }
-        public static int LengthOfLastWord(string s)
+        public static bool ContainsNearbyDuplicate(int[] nums, int k)
         {
-            string[] words = s.Split(" ", StringSplitOptions.RemoveEmptyEntries);
-            string lastWord = words[words.Length - 1];
-            int howManyLetters = lastWord.Length;
-
-            return howManyLetters;
+            for(int i = 0; i < nums.Length; i++)
+            {
+                for (int j = i + 1; j < nums.Length; j ++)
+                {
+                    if (nums[i] == nums[j] && Math.Abs(i - j) <= k)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
 
     }
